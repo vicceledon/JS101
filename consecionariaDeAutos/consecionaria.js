@@ -41,8 +41,8 @@ const concesionaria = {
 console.log(concesionaria.buscarAuto("ABC123"));
 console.log(concesionaria.buscarAuto("APL123"));
 console.log(concesionaria.buscarAuto("JJK116"));
-//concesionaria.venderAuto("APL123");
-//concesionaria.venderAuto("JJK116");
+concesionaria.venderAuto("APL123");
+concesionaria.venderAuto("JJK116");
 console.log(concesionaria.buscarAuto("JJK116"));
 console.log(concesionaria.autosParaLaVenta());
 console.log("autos 0km");
