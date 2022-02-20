@@ -37,6 +37,10 @@ const concesionaria = {
     let totalVentas = ventas.reduce((total, venta) => total + venta, 0);
     return totalVentas;
   },
+  puedeComprar: function (auto, persona) {
+    //this.autos contiene la lista de autos
+    //persona datos del comprador
+  },
 };
 console.log(concesionaria.buscarAuto("ABC123"));
 console.log(concesionaria.buscarAuto("APL123"));
@@ -49,3 +53,11 @@ console.log("autos 0km");
 console.log(concesionaria.autosNuevos());
 console.log(concesionaria.listaDeVentas());
 console.log(concesionaria.totalDeVentas());
+//definicion de la persona
+let persona = {
+  nombre: "Juan",
+  capacidadDePagoEnCuotas: 20000,
+  capacidadDePagoTotal: 100000,
+};
+let autosParaVender = concesionaria.autosParaLaVenta();
+console.log(concesionaria.puedeComprar(autosParaVender, persona));
