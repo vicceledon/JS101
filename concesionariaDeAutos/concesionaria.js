@@ -38,15 +38,26 @@ const concesionaria = {
     return totalVentas;
   },
   puedeComprar: function (auto, persona) {
-    //this.autos contiene la lista de autos
-    //persona datos del comprador
+    let costoTotal = auto.precio > persona.capacidadDePagoTotal ? false : true;
+    let capacidadDePagoEnCuotas =
+      auto.precio / auto.cuotas > persona.capacidadDePagoEnCuotas
+        ? false
+        : true;
+    return costoTotal && capacidadDePagoEnCuotas;
+  },
+  autosQuePuedeComprar: function (persona) {
+    let autosParaVenta = this.autosParaLaVenta();
+    let listaDeAutosQuePuedeCompra = autosParaVenta.filter(
+      (auto) => this.puedeComprar(auto, persona) === true
+    );
+    return listaDeAutosQuePuedeCompra;
   },
 };
 console.log(concesionaria.buscarAuto("ABC123"));
 console.log(concesionaria.buscarAuto("APL123"));
 console.log(concesionaria.buscarAuto("JJK116"));
-concesionaria.venderAuto("APL123");
-concesionaria.venderAuto("JJK116");
+//concesionaria.venderAuto("APL123");
+//concesionaria.venderAuto("JJK116");
 console.log(concesionaria.buscarAuto("JJK116"));
 console.log(concesionaria.autosParaLaVenta());
 console.log("autos 0km");
@@ -59,5 +70,6 @@ let persona = {
   capacidadDePagoEnCuotas: 20000,
   capacidadDePagoTotal: 100000,
 };
-let autosParaVender = concesionaria.autosParaLaVenta();
-console.log(concesionaria.puedeComprar(autosParaVender, persona));
+//let autosParaVender = autos[1];
+//console.log(concesionaria.puedeComprar(autosParaVender, persona));
+console.log(concesionaria.autosQuePuedeComprar(persona));
